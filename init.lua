@@ -21,20 +21,17 @@ throwing_shoot_arrow=function (item, player, pointed_thing)
 end
 
 minetest.register_craftitem("throwing:string", {
-	image = "throwing_string.png",
-	on_place_on_ground = minetest.craftitem_place_item,
+	inventory_image = "throwing_string.png",
 })
 
 minetest.register_craftitem("throwing:bow", {
-	image = "throwing_bow.png",
+	inventory_image = "throwing_bow.png",
     stack_max = 1,
-	on_place_on_ground = minetest.craftitem_place_item,
 	on_use = throwing_shoot_arrow,
 })
 
 minetest.register_craftitem("throwing:arrow", {
-	image = "throwing_arrow.png",
-	on_place_on_ground = minetest.craftitem_place_item,
+	inventory_image = "throwing_arrow.png",
 })
 
 -- The Arrow Entity
