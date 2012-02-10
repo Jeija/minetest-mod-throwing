@@ -27,6 +27,7 @@ minetest.register_craftitem("throwing:string", {
 
 minetest.register_craftitem("throwing:bow", {
 	image = "throwing_bow.png",
+    stack_max = 1,
 	on_place_on_ground = minetest.craftitem_place_item,
 	on_use = throwing_shoot_arrow,
 })
@@ -70,7 +71,7 @@ THROWING_ARROW_ENTITY.on_step = function(self, dtime)
 	-- Become item when hitting a node
 	if self.lastpos.x~=nil then --If there is no lastpos for some reason
 		if node.name ~= "air" then
-			minetest.env:add_item(self.lastpos, 'craft "throwing:arrow" 1')
+			minetest.env:add_item(self.lastpos, 'throwing:arrow')
 			self.object:remove()
 		end
 	end
@@ -81,30 +82,28 @@ minetest.register_entity("throwing:arrow_entity", THROWING_ARROW_ENTITY)
 
 
 
-
-
 --CRAFTS
 minetest.register_craft({
-	output = 'craft "throwing:string" 1',
+	output = 'throwing:string',
 	recipe = {
-		{"default:junglegrass"},
-		{"default:junglegrass"},
+		{'default:junglegrass'},
+		{'default:junglegrass'},
 	}
 })
 
 minetest.register_craft({
-	output = 'craft "throwing:bow" 1',
+	output = 'throwing:bow',
 	recipe = {
-		{"throwing:string", "default:wood", ''},
-		{"throwing:string", '', "default:wood"},
-		{"throwing:string", "default:wood", ''},
+		{'throwing:string', 'default:wood', ''},
+		{'throwing:string', '', 'default:wood'},
+		{'throwing:string', 'default:wood', ''},
 	}
 })
 
 minetest.register_craft({
-	output = '"throwing:arrow" 16',
+	output = 'throwing:arrow 16',
 	recipe = {
-		{"default:stick", "default:stick", "default:steel_ingot"},
+		{'default:stick', 'default:stick', 'default:steel_ingot'},
 	}
 })
 
